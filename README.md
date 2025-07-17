@@ -1,77 +1,104 @@
+# 🌾 Rice Variety Classification using Convolutional Neural Network
 
-# 🌾 Klasifikasi Varietas Beras
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Repositori ini berisi pipeline lengkap untuk mengklasifikasikan lima varietas beras menggunakan Convolutional Neural Network (CNN). Proyek ini mencakup langkah-langkah dari persiapan data, pelatihan model, evaluasi, hingga ekspor model dalam berbagai format: **SavedModel**, **TensorFlow Lite**, dan **TensorFlow.js** untuk deployment multiplatform.
+Proyek ini bertujuan untuk mengklasifikasikan lima varietas beras menggunakan algoritma *Convolutional Neural Network (CNN)*. Sistem dibangun dalam kerangka klasifikasi citra, lengkap dengan preprocessing data, pelatihan model, evaluasi performa, dan ekspor model ke dalam tiga format: **SavedModel**, **TensorFlow Lite**, dan **TensorFlow.js** untuk mendukung deployment lintas platform.
 
----
-
-## 📋 Ikhtisar Proyek
-
-### 🎯 Tujuan
-Membangun model CNN untuk mengklasifikasikan gambar beras ke dalam lima varietas:
-- Arborio
-- Basmati
-- Jasmine
-- Ipsala
-- Karacadag
-
-### 📦 Dataset
-Dataset terdiri dari **15.000 gambar** (3.000 per kelas) dari:
-> [Rice Image Dataset – Kaggle](https://www.kaggle.com/datasets/muratkokludataset/rice-image-dataset)  
-(Lisensi: CC0 1.0 Public Domain)
-
-### 🧠 Metode
-- Arsitektur: CNN dengan Conv2D, MaxPooling, dan Dropout
-- Optimasi: Adam + ReduceLROnPlateau
-- Evaluasi: Akurasi, confusion matrix, classification report
-
-### 📈 Performa Model
-- Akurasi pelatihan: ~99.91%
-- Akurasi validasi: ~99.47%
-- F1-score test set: ~99% di semua kelas
-- Overfitting minimal: training loss 0.0035 vs validation loss 0.0174
+📌 Proyek ini merupakan bagian dari submission **Belajar Fundamental Deep Learning** di Dicoding.  
+🎖️ **Rating Submission: 4/5 (Bintang Empat)**  
+📁 Submission ID: `4205562`  
+📅 Tanggal Kirim: `4 Mei 2025`
 
 ---
 
-## ⚙️ Fitur Utama
+## 🧑‍💼 Peran dan Tanggung Jawab System Analyst
 
-### ✅ Persiapan & Augmentasi Data
-- Sampling acak: 3.000 gambar/kelas
-- Split: Train/Validation/Test (80/10/10)
-- Augmentasi real-time: rotasi, zoom, flip horizontal
+Sebagai System Analyst dalam proyek ini, saya bertanggung jawab untuk:
 
-### 🧱 Arsitektur Model
-- CNN berlapis (Conv2D → MaxPooling → Dropout)
+- 📌 **Menganalisis kebutuhan sistem klasifikasi gambar** untuk otomasi identifikasi varietas beras.
+- 🧩 **Menyusun arsitektur pemrosesan data dan pemodelan CNN** secara modular dan terdokumentasi.
+- 📑 **Menyiapkan dokumentasi sistem** (struktur folder, proses pelatihan, evaluasi).
+- 📊 **Menganalisis performa sistem dan memberikan rekomendasi pengembangan** berdasarkan hasil evaluasi dan umpan balik reviewer.
+
+---
+
+## 🎯 Tujuan Proyek
+
+- Mengembangkan model CNN untuk mengklasifikasikan 5 varietas beras:
+  - Arborio
+  - Basmati
+  - Ipsala
+  - Jasmine
+  - Karacadag
+- Meningkatkan akurasi klasifikasi hingga mendekati 100%
+- Mengekspor model untuk keperluan deployment web dan mobile
+
+---
+
+## 🗂 Dataset
+
+Dataset yang digunakan adalah:
+📦 [Rice Image Dataset – Kaggle](https://www.kaggle.com/datasets/muratkokludataset/rice-image-dataset)  
+Total: 15.000 gambar (3.000 gambar per kelas)  
+Lisensi: CC0 1.0 Public Domain
+
+---
+
+## ⚙️ Teknologi dan Tools
+
+- **Bahasa Pemrograman**: Python
+- **Framework DL**: TensorFlow, Keras
+- **Preprocessing**: OpenCV, Keras ImageDataGenerator
+- **Deployment Model**: SavedModel, TF-Lite, TFJS
+- **Visualisasi**: Matplotlib, Seaborn
+
+---
+
+## 🧠 Arsitektur Model
+
+- Model Sequential CNN
+- Layer utama: Conv2D → MaxPooling → Dropout
+- Optimizer: Adam
 - Callbacks: EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-- Penyeimbangan kelas otomatis dengan `class_weight`
+- Data augmentation: flip, rotate, zoom
 
-### 📊 Evaluasi & Visualisasi
-- Visualisasi kurva akurasi dan loss
-- Confusion matrix dan classification report
-- Contoh prediksi benar & salah
+---
+---
 
-### 📤 Ekspor Model
-- ✅ SavedModel (`saved_model/`)
-- ✅ TensorFlow Lite (`tflite/`)
-- ✅ TensorFlow.js (`tfjs_model/`)
+## 🧾 Ringkasan Proses Sistem
+
+| Langkah Sistem            | Deskripsi                                                             |
+|---------------------------|----------------------------------------------------------------------|
+| Data Ingestion            | Mengambil data gambar varietas beras dari Kaggle                    |
+| Preprocessing             | Resize, augmentasi, normalisasi                                      |
+| Modeling                  | CNN (Conv2D, MaxPooling, Dropout) dengan optimasi Adam              |
+| Evaluasi                  | Akurasi, F1-score, confusion matrix, visualisasi loss/accuracy      |
+| Deployment Preparation    | Ekspor ke SavedModel, TFLite, dan TFJS                               |
+| Inference                 | Prediksi gambar baru melalui model terlatih                         |
 
 ---
 
-## 🚀 Cara Memulai
+## 📊 Evaluasi Performa
 
-### 🧰 Prasyarat
-- Python 3.7+
-- pip
+| Metrik                | Hasil        |
+|-----------------------|--------------|
+|  Akurasi data latih   | ~99.91%      |
+| Akurasi Validasi      | ~99.47%      |
+| F1-score per Kelas    | ≥ 99%        |
+| Overfitting           | Minimal      |
 
-### 🛠 Instalasi
-```bash
-git clone https://github.com/username/rice-classification.git
-cd rice-classification/submission
-python -m venv venv
-source venv/bin/activate      # macOS/Linux
-venv\Scripts\activate.bat     # Windows
-pip install -r requirements.txt
-```
+Visualisasi dan metrik evaluasi tersedia dalam bentuk:
+- Kurva akurasi & loss
+- Confusion matrix
+- Klasifikasi per kelas
+
+---
+
+## 📦 Output Model
+
+- `saved_model/` — format asli TensorFlow
+- `tflite/` — untuk perangkat mobile
+- `tfjs_model/` — untuk deployment web
 
 ---
 
@@ -152,18 +179,23 @@ print(f"Prediksi: {class_names[idx]} (confidence {pred[0][idx]:.4f})")
 
 ---
 
-## 💡 Saran Pengembangan
-- Validasi dengan data baru dari dunia nyata
-- Analisis kesalahan prediksi (30–50 kasus)
-- Kompresi model (TFLite quantization)
-- Cross-validation (k=5)
-- Monitoring performa di lingkungan produksi
-- Integrasi feedback pengguna untuk retraining
+## 📌 Insight dan Rekomendasi
+  - Tambahkan preprocessing untuk penyesuaian ukuran gambar
+  - Validasi dengan data dari dunia nyata
+  - Lakukan kompresi model agar cocok untuk device edge
+  - Implementasi inferensi realtime berbasis web/mobile
 
 ---
 
-## 👤 Penulis
+## 👩‍💻 Tentang Penulis
+Faizah Rizki Auliawati
+📍 Mahasiswa Informatika, Machine Learning & System Analysis Enthusiast
+🎓 Dicoding Certified — Belajar Fundamental Deep Learning
+📬 frauliawati@gmail.com
+🔗 [GitHub](https://github.com/faizah-ra)
 
-**Faizah Rizki Auliawati**  
-📧 frauliawati@gmail.com  
-🆔 Dicoding ID: MC009D5X2457
+---
+
+## 📄 Lisensi
+
+Proyek ini berlisensi MIT. Lihat `LICENSE` untuk detail.
